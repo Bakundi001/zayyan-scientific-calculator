@@ -18,6 +18,11 @@ const negateBtn = document.getElementById("negateBtn");
 const decimalBtn = document.getElementById("decimalBtn");
 const equalsBtn = document.getElementById("equalsBtn");
 
+const memoryClearBtn = document.getElementById("memoryClearBtn");
+const memoryRecallBtn = document.getElementById("memoryRecallBtn");
+const memoryAddBtn = document.getElementById("memoryAddBtn");
+const memorySubtractBtn = document.getElementById("memorySubtractBtn");
+
 const addBtn = document.getElementById("addBtn");
 const subBtn = document.getElementById("subBtn");
 const mulBtn = document.getElementById("mulBtn");
@@ -42,6 +47,9 @@ const angleModeBtn = document.getElementById("angleModeBtn");
 const historyList = document.getElementById("historyList");
 const clearHistoryBtn = document.getElementById("clearHistoryBtn");
 
+const themeToggleBtn = document.getElementById("themeToggleBtn");
+const themeLabel = document.getElementById("themeLabel");
+
 // Calculator state
 const HISTORY_KEY = "zayyanCalculatorHistory";
 
@@ -52,6 +60,9 @@ let startNewNumber = true;
 let angleMode = "DEG";
 let history = [];
 
+// Calculator memory
+let memoryValue = 0;
+let memoryHasValue = false;
 // ========================================
 // DISPLAY
 // ========================================
@@ -611,3 +622,65 @@ if (shortcut) {
     document.getElementById(shortcut)?.click();
 }
 });
+
+ // MEMORY BUTTON FUNCTIONS
+
+memoryClearBtn.addEventListener("click", function () {
+    memoryValue = 0;
+    memoryHasValue = false;
+    expression.textContent = "Memory cleared";
+});
+
+memoryRecallBtn.addEventListener("click", function () {
+    if (!memoryHasValue) {
+        expression.textContent = "Memory is empty";
+        return;
+    }
+
+    currentValue = String(memoryValue);
+    startNewNumber = true;
+    updateDisplay();
+    expression.textContent = "Memory recalled";
+});
+
+memoryAddBtn.addEventListener("click", function () {
+    memoryValue += getCurrentNumber();
+    memoryHasValue = true;
+    expression.textContent = "Added to memory";
+});
+
+memorySubtractBtn.addEventListener("click", function () {
+    memoryValue -= getCurrentNumber();
+    memoryHasValue = true;
+    expression.textContent = "Subtracted from memory";
+});
+
+/* DARK AND LIGHT THEME SWITCH */
+
+function applyCalculatorTheme(isLight) {
+    document.body.classList.toggle("light-theme", isLight);
+
+    themeToggleBtn.setAttribute("aria-checked", String(isLight));
+
+    themeLabel.textContent = isLight ? "Light Mode" : "Dark Mode";
+
+    themeToggleBtn.setAttribute(
+        "aria-label",
+        isLight ? "Switch to dark theme" : "Switch to light theme"
+    );
+
+    localStorage.setItem(
+        "zayyanCalculatorTheme",
+        isLight ? "light" : "dark"
+    );
+}
+
+themeToggleBtn.addEventListener("click", function () {
+    const isLight = !document.body.classList.contains("light-theme");
+    applyCalculatorTheme(isLight);
+});
+
+/* Restore the user's saved theme */
+const savedCalculatorTheme = localStorage.getItem("zayyanCalculatorTheme");
+
+applyCalculatorTheme(savedCalculatorTheme === "light");

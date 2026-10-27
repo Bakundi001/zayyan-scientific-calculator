@@ -1,8 +1,20 @@
 
-/* ======================================
+/* =========================================
    ZAYYAN'S SCIENTIFIC CALCULATOR
-   Professional responsive design
-====================================== */
+   Clean, responsive, professional design
+========================================= */
+
+:root {
+    --background: #080f23;
+    --card: #0b142b;
+    --display: #050b19;
+    --text: #f5f7ff;
+    --muted: #9eafd5;
+    --blue: #2878ff;
+    --operator: #1b3768;
+    --teal: #00cbd0;
+    --border: #20396d;
+}
 
 * {
     box-sizing: border-box;
@@ -10,73 +22,64 @@
     padding: 0;
 }
 
-:root {
-    --background: #0b1020;
-    --card: #151d31;
-    --display: #080d19;
-    --text: #f4f7ff;
-    --muted: #9aa9c4;
-    --blue: #3984ff;
-    --blue-hover: #5797ff;
-    --teal: #19b8a6;
-    --teal-hover: #28d4bf;
-    --operator: #263b5d;
-    --border: #293650;
-}
-
 body {
     min-height: 100vh;
-    padding: 35px 16px;
+    padding: 20px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background:
-        radial-gradient(ellipse at top, #1b3158 0%, transparent 55%),
+        radial-gradient(ellipse at top, #172b50 0%, transparent 60%),
         var(--background);
     color: var(--text);
     font-family: "Segoe UI", Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
 }
 
 .calculator {
     width: 100%;
-    max-width: 480px;
-    padding: 25px;
-    background: var(--card);
+    max-width: 740px;
+    padding: 22px;
+    background: linear-gradient(145deg, #091329, #060d1e);
     border: 1px solid var(--border);
-    border-radius: 24px;
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+    border-radius: 28px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
 }
 
-.calculator h1 {
-    font-size: 25px;
+/* Header */
+
+.calculator-header {
     text-align: center;
-    line-height: 1.35;
-    margin-bottom: 8px;
-    letter-spacing: -0.5px;
+    margin-bottom: 18px;
+}
+
+.calculator-header h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 5px;
 }
 
 .subtitle {
-    color: var(--muted);
-    font-size: 13px;
-    text-align: center;
-    margin-bottom: 24px;
+    color: #9ba8ff;
+    font-size: clamp(16px, 3vw, 24px);
+    font-weight: 500;
 }
 
 /* Display */
 
 .display-section {
     background: var(--display);
-    padding: 18px;
+    padding: 14px 18px;
     border: 1px solid var(--border);
-    border-radius: 16px;
-    margin-bottom: 18px;
+    border-radius: 18px;
+    margin-bottom: 16px;
 }
 
 .expression {
-    min-height: 24px;
-    margin-bottom: 8px;
+    min-height: 22px;
+    margin-bottom: 2px;
     color: var(--muted);
-    font-size: 14px;
+    font-size: 16px;
     text-align: right;
     overflow-wrap: anywhere;
 }
@@ -84,15 +87,16 @@ body {
 .calculator-display {
     display: block;
     width: 100%;
+    min-width: 0;
     border: none;
     outline: none;
     background: transparent;
     color: var(--text);
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: clamp(32px, 8vw, 44px);
+    font-family: inherit;
+    font-size: clamp(32px, 7vw, 48px);
     font-weight: 600;
     text-align: right;
-    padding: 8px 0;
+    padding: 4px 0;
 }
 
 .angle-mode {
@@ -100,52 +104,86 @@ body {
     justify-content: flex-end;
     align-items: center;
     gap: 10px;
-    margin-top: 12px;
+    margin-top: 5px;
     color: var(--muted);
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .angle-mode button {
     min-width: 52px;
-    padding: 7px 12px;
-    border: 1px solid #315c89;
-    border-radius: 8px;
-    background: #18365a;
-    color: #8bc0ff;
+    padding: 6px 12px;
+    border: 1px solid #2054a1;
+    border-radius: 9px;
+    background: #102b55;
+    color: #73b6ff;
     font-weight: 700;
     cursor: pointer;
 }
 
-/* Main keypad */
+/* Main keypad: five columns */
 
 .keypad {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
-    margin-bottom: 28px;
+    gap: 9px;
+    margin-bottom: 16px;
 }
+
+.keypad button:nth-child(-n+5) {
+    grid-row: 1;
+}
+
+.keypad button:nth-child(1) { grid-column: 1; }
+.keypad button:nth-child(2) { grid-column: 2; }
+.keypad button:nth-child(3) { grid-column: 3; }
+.keypad button:nth-child(4) { grid-column: 4; }
+.keypad button:nth-child(5) {
+    grid-row: 2;
+    grid-column: 4;
+}
+
+/* Keep numbers and operators in their correct positions */
+.keypad button:nth-child(6)  { grid-row: 2; grid-column: 1; }
+.keypad button:nth-child(7)  { grid-row: 2; grid-column: 2; }
+.keypad button:nth-child(8)  { grid-row: 2; grid-column: 3; }
+.keypad button:nth-child(9)  { grid-row: 3; grid-column: 4; }
+.keypad button:nth-child(10) { grid-row: 3; grid-column: 1; }
+.keypad button:nth-child(11) { grid-row: 3; grid-column: 2; }
+.keypad button:nth-child(12) { grid-row: 3; grid-column: 3; }
+.keypad button:nth-child(13) { grid-row: 4; grid-column: 4; }
+.keypad button:nth-child(14) { grid-row: 4; grid-column: 1; }
+.keypad button:nth-child(15) { grid-row: 4; grid-column: 2; }
+.keypad button:nth-child(16) { grid-row: 4; grid-column: 3; }
+.keypad button:nth-child(17) { grid-row: 5; grid-column: 4; }
+.keypad button:nth-child(18) {
+    grid-row: 5;
+    grid-column: 1 / span 2;
+}
+.keypad button:nth-child(19) { grid-row: 5; grid-column: 3; }
+.keypad button:nth-child(20) { grid-row: 6; grid-column: 4; }
 
 .keypad button,
 .scientific-buttons button {
     min-width: 0;
-    min-height: 56px;
-    border: 1px solid var(--border);
+    min-height: 58px;
+    border: 1px solid #30436a;
     border-radius: 13px;
-    background: #202b42;
+    background: #202a41;
     color: var(--text);
-    font-size: 20px;
+    font-family: inherit;
+    font-size: 23px;
     font-weight: 600;
     cursor: pointer;
-    transition:
-        background 0.18s ease,
-        transform 0.18s ease,
-        border-color 0.18s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition: background 0.18s ease,
+                transform 0.18s ease,
+                border-color 0.18s ease;
 }
 
-.keypad button:hover,
-.scientific-buttons button:hover {
+.keypad button:hover {
     background: #30415f;
-    border-color: #50688f;
+    border-color: #5979b0;
 }
 
 .keypad button:active,
@@ -153,112 +191,129 @@ body {
     transform: scale(0.96);
 }
 
-/* Special keypad keys */
-
 .keypad .clear-key {
-    background: #702f43;
-    border-color: #8e3d55;
-    color: #ffdce5;
+    background: #64253f;
+    border-color: #98405e;
+    color: #ffe3ec;
 }
 
 .keypad .clear-key:hover {
-    background: #913b55;
+    background: #853653;
 }
 
 .keypad .operator-key {
     background: var(--operator);
-    border-color: #38557e;
-    color: #a9d0ff;
-    font-size: 23px;
+    border-color: #2855a0;
+    color: #b5d7ff;
+    font-size: 26px;
 }
 
 .keypad .operator-key:hover {
-    background: #34527b;
+    background: #28509a;
 }
 
 .keypad .equals-key {
     background: var(--blue);
-    border-color: var(--blue);
+    border-color: #438aff;
     color: white;
-    font-size: 24px;
+    font-size: 27px;
 }
 
 .keypad .equals-key:hover {
-    background: var(--blue-hover);
+    background: #4990ff;
 }
 
 .keypad .zero-key {
     grid-column: span 2;
 }
 
-/* Scientific functions */
+/* Scientific functions: two rows of six */
 
 .scientific-section {
-    padding-top: 22px;
-    border-top: 1px solid var(--border);
-}
-
-.scientific-section h2,
-.result-section h2,
-.history-section h2 {
-    font-size: 17px;
-    margin-bottom: 15px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: rgba(5, 12, 29, 0.55);
+    margin-bottom: 16px;
 }
 
 .scientific-buttons {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 9px;
 }
 
 .scientific-buttons button {
-    min-height: 48px;
-    padding: 8px 3px;
-    background: #123d43;
-    border-color: #1b5c62;
-    color: #8df3e6;
-    font-size: 16px;
+    min-height: 58px;
+    padding: 6px 2px;
+    background: #07363f;
+    border-color: #087784;
+    color: #55f1ed;
+    font-size: clamp(13px, 2.4vw, 20px);
+}
+
+.scientific-buttons .equals-key {
+    grid-column: span 2;
+    min-height: 58px;
+    background: var(--blue);
+    border-color: #438aff;
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.scientific-buttons .equals-key:hover {
+    background: #4990ff;
 }
 
 .scientific-buttons button:hover {
-    background: #19535a;
+    background: #10505a;
     border-color: var(--teal);
 }
 
-/* Result section */
+/* Result and History side by side */
 
-.result-section {
-    margin-top: 26px;
-    padding: 17px;
-    background: #10192a;
-    border: 1px solid var(--border);
-    border-radius: 14px;
+.bottom-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 16px;
+    background: linear-gradient(135deg, #101d39, #0a142a);
+    border: 1px solid #20417f;
+    border-radius: 17px;
 }
 
-.result-section h2 {
-    color: var(--muted);
+.result-section {
+    min-width: 0;
+    padding-right: 12px;
+    border-right: 1px solid #28477e;
+}
+
+.result-section h2,
+.history-section h2 {
+    font-size: 17px;
+    color: #8faaff;
+    margin-bottom: 10px;
 }
 
 #result {
-    color: #fdfdff;
-    line-height: 1.6;
+    color: var(--text);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
     overflow-wrap: anywhere;
 }
 
-/* Calculation history */
-
 .history-section {
-    margin-top: 26px;
-    padding-top: 22px;
-    border-top: 1px solid var(--border);
+    min-width: 0;
 }
 
 .history-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 14px;
+    gap: 6px;
+    margin-bottom: 8px;
 }
 
 .history-heading h2 {
@@ -266,12 +321,12 @@ body {
 }
 
 .history-clear-btn {
-    padding: 8px 11px;
+    padding: 5px 8px;
     border: 1px solid #71384b;
-    border-radius: 8px;
+    border-radius: 7px;
     background: #492536;
     color: #ffc7d5;
-    font-size: 12px;
+    font-size: 11px;
     cursor: pointer;
 }
 
@@ -283,58 +338,120 @@ body {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    max-height: 320px;
+    gap: 6px;
+    max-height: 110px;
     overflow-y: auto;
 }
 
 #historyList li {
-    padding: 12px;
+    padding: 7px;
     background: #10192a;
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 8px;
     color: var(--muted);
-    font-size: 13px;
-    line-height: 1.6;
+    font-size: 12px;
+    line-height: 1.4;
     overflow-wrap: anywhere;
 }
 
 #historyList li strong {
     display: block;
-    margin-top: 4px;
-    color: #8df3e6;
-    font-size: 15px;
+    margin-top: 3px;
+    color: #55e9e2;
+    font-size: 13px;
 }
 
 #historyList .empty-history {
-    text-align: center;
-    padding: 18px 10px;
+    padding: 7px;
 }
 
-/* Small screens */
+/* Keyboard focus */
 
-@media (max-width: 400px) {
+button:focus-visible {
+    outline: 2px solid #70c9ff;
+    outline-offset: 2px;
+}
+
+/* Tablets and phones */
+
+@media (max-width: 600px) {
     body {
-        padding: 15px 8px;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 6px;
+        align-items: flex-start;
     }
 
     .calculator {
-        padding: 16px;
-        border-radius: 18px;
+        max-width: 440px;
+        padding: 10px;
+        margin: 0 auto;
+        border-radius: 20px;
     }
 
-    .calculator h1 {
-        font-size: 22px;
+    .calculator-header {
+        margin-bottom: 8px;
+    }
+
+    .calculator-header h1 {
+        font-size: 29px;
+        margin-bottom: 2px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    .display-section {
+        padding: 8px 10px;
+        margin-bottom: 9px;
+        border-radius: 13px;
+    }
+
+    .expression {
+        min-height: 16px;
+        font-size: 12px;
+    }
+
+    .calculator-display {
+        min-height: 43px;
+        padding: 2px 0;
+        font-size: 35px;
+    }
+
+    .angle-mode {
+        margin-top: 3px;
+        font-size: 11px;
+    }
+
+    .angle-mode button {
+        min-height: 28px;
+        padding: 3px 10px;
     }
 
     .keypad {
-        gap: 7px;
+        gap: 6px;
+        margin-bottom: 10px;
     }
 
     .keypad button {
-        min-height: 49px;
+        min-height: 48px;
         border-radius: 10px;
-        font-size: 18px;
+        font-size: 20px;
+    }
+
+    .keypad .operator-key {
+        font-size: 23px;
+    }
+
+    .keypad .equals-key {
+        font-size: 25px;
+    }
+
+    .scientific-section {
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 13px;
     }
 
     .scientific-buttons {
@@ -343,125 +460,110 @@ body {
 
     .scientific-buttons button {
         min-height: 43px;
+        padding: 4px 1px;
+        border-radius: 9px;
+        font-size: 15px;
+    }
+
+    .bottom-panels {
+        gap: 9px;
+        padding: 10px;
+        border-radius: 13px;
+    }
+
+    .result-section {
+        padding-right: 8px;
+    }
+
+    .result-section h2,
+    .history-section h2 {
+        font-size: 14px;
+        margin-bottom: 7px;
+    }
+
+    #result {
+        font-size: 17px;
+    }
+
+    .history-heading {
+        flex-wrap: wrap;
+    }
+
+    .history-clear-btn {
+        padding: 4px 6px;
+        font-size: 10px;
+    }
+
+    #historyList {
+        max-height: 75px;
+    }
+
+    #historyList li {
+        padding: 5px;
+        font-size: 11px;
+    }
+}
+
+/* Extra-small phones */
+
+@media (max-width: 360px) {
+    .calculator {
+        padding: 7px;
+    }
+
+    .calculator-header h1 {
+        font-size: 25px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .keypad {
+        gap: 4px;
+    }
+
+    .keypad button {
+        min-height: 42px;
+        font-size: 17px;
+        border-radius: 8px;
+    }
+
+    .keypad .operator-key {
+        font-size: 20px;
+    }
+
+    .scientific-section {
+        padding: 6px;
+    }
+
+    .scientific-buttons {
+        gap: 4px;
+    }
+
+    .scientific-buttons button {
+        min-height: 37px;
+        font-size: 12px;
+        border-radius: 7px;
+    }
+
+    .bottom-panels {
+        gap: 6px;
+        padding: 7px;
+    }
+
+    .result-section h2,
+    .history-section h2 {
+        font-size: 12px;
+    }
+
+    #result {
         font-size: 14px;
     }
 }
 
-/* =====================================
-   MOBILE TOUCH AND RESPONSIVENESS
-===================================== */
+/* Respect reduced-motion preferences */
 
-/* Make taps more comfortable on touchscreens */
-button {
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-/* Smooth, consistent button interaction */
-.keypad button,
-.scientific-buttons button,
-.angle-mode button,
-.history-clear-btn {
-    touch-action: manipulation;
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-/* Tablets and medium-sized screens */
-@media (max-width: 600px) {
-    body {
-        min-height: 100vh;
-        padding: 12px;
-    }
-
-    .calculator {
-        width: 100%;
-        max-width: 480px;
-        padding: 18px;
-        margin: 0 auto;
-    }
-
-    .calculator h1 {
-        font-size: clamp(20px, 5vw, 25px);
-    }
-
-    .display-section {
-        padding: 15px;
-    }
-
-    .calculator-display {
-        width: 100%;
-        min-width: 0;
-        font-size: clamp(30px, 8vw, 42px);
-    }
-
-    .keypad {
-        gap: 9px;
-    }
-
-    .keypad button {
-        min-height: 56px;
-        font-size: 20px;
-    }
-
-    .scientific-buttons {
-        gap: 8px;
-    }
-
-    .scientific-buttons button {
-        min-height: 48px;
-        font-size: 16px;
-    }
-
-    #historyList {
-        max-height: 260px;
-    }
-}
-
-/* Narrow mobile phones */
-@media (max-width: 360px) {
-    body {
-        padding: 8px 5px;
-    }
-
-    .calculator {
-        padding: 12px;
-        border-radius: 16px;
-    }
-
-    .display-section {
-        padding: 12px;
-    }
-
-    .keypad {
-        gap: 6px;
-    }
-
-    .keypad button {
-        min-height: 50px;
-        font-size: 18px;
-        border-radius: 9px;
-    }
-
-    .scientific-buttons {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 7px;
-    }
-
-    .scientific-buttons button {
-        min-height: 46px;
-        font-size: 15px;
-    }
-
-    .history-heading {
-        align-items: flex-start;
-        flex-wrap: wrap;
-    }
-}
-
-/* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -471,4 +573,210 @@ button {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
     }
+}
+
+/* Memory buttons */
+.memory-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 10px 0;
+}
+
+
+.memory-buttons button {
+    min-height: 42px;
+    border: 1px solid #ff5252;
+    border-radius: 10px;
+    background: #d62828;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.memory-buttons button:hover {
+    background: #ff4545;
+    border-color: #ff7777;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+
+.memory-buttons button:active {
+    transform: scale(0.96);
+}
+
+/* Dark and light theme switch */
+.theme-switch-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 12px 0;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color, #343b4f);
+    border-radius: 12px;
+}
+
+#themeLabel {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* Professional ON/OFF theme toggle */
+.theme-toggle {
+    position: relative;
+    width: 54px;
+    height: 30px;
+    flex-shrink: 0;
+    border: 2px solid #566174;
+    border-radius: 30px;
+    background: #30394b;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-toggle-knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.25s ease;
+}
+
+.theme-toggle[aria-checked="true"] {
+    background: #3478f6;
+    border-color: #438aff;
+}
+
+.theme-toggle[aria-checked="true"] .theme-toggle-knob {
+    transform: translateX(24px);
+}
+
+.theme-toggle:focus-visible {
+    outline: 3px solid #80b3ff;
+    outline-offset: 3px;
+}
+
+
+/* LIGHT THEME COLORS */
+body.light-theme {
+    --background: #edf2fa;
+    --card: #ffffff;
+    --display: #ffffff;
+    --text: #182238;
+    --muted: #64748b;
+    --blue: #2878ff;
+    --operator: #dbeafe;
+    --teal: #007f86;
+    --border: #cbd5e1;
+
+    background: #edf2fa;
+    color: var(--text);
+}
+
+/* Main calculator card */
+body.light-theme .calculator {
+    background: linear-gradient(145deg, #ffffff, #f4f7fc);
+    border-color: var(--border);
+    box-shadow: 0 20px 55px rgba(30, 50, 80, 0.15);
+}
+
+/* Calculator display */
+body.light-theme .display-section {
+    background: var(--display);
+    border-color: var(--border);
+}
+
+/* Number buttons */
+body.light-theme .keypad button {
+    background: #e2e8f0;
+    border-color: #cbd5e1;
+    color: #182238;
+}
+
+body.light-theme .keypad button:hover {
+    background: #cbdcf5;
+    border-color: #8daedb;
+}
+
+/* Operators */
+body.light-theme .keypad .operator-key {
+    background: #dbeafe;
+    border-color: #93c5fd;
+    color: #174ea6;
+}
+
+/* Clear button stays red */
+body.light-theme .keypad .clear-key {
+    background: #fce7ef;
+    border-color: #f5a3bd;
+    color: #a31843;
+}
+
+/* Scientific section */
+body.light-theme .scientific-section {
+    background: #edf7f8;
+    border-color: #b7dfe1;
+}
+
+body.light-theme .scientific-buttons button {
+    background: #d8f3f2;
+    border-color: #8bd5d2;
+    color: #075e63;
+}
+
+body.light-theme .scientific-buttons button:hover {
+    background: #bce9e7;
+}
+
+/* Equals button stays blue */
+body.light-theme .scientific-buttons .equals-key {
+    background: #2878ff;
+    border-color: #438aff;
+    color: #ffffff;
+}
+
+/* Result and history panels */
+body.light-theme .bottom-panels {
+    background: linear-gradient(135deg, #ffffff, #edf3fc);
+    border-color: #cbd5e1;
+}
+
+body.light-theme .result-section {
+    border-right-color: #cbd5e1;
+}
+
+body.light-theme .result-section h2,
+body.light-theme .history-section h2 {
+    color: #2858a8;
+}
+
+body.light-theme #historyList li {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+body.light-theme #historyList li strong {
+    color: #087f83;
+}
+
+/* Theme switch row */
+body.light-theme .theme-switch-row {
+    border-color: #cbd5e1;
+}
+
+/* Memory buttons remain red */
+body.light-theme .memory-buttons button {
+    background: #d62828;
+    border-color: #ff5252;
+    color: #ffffff;
 }
