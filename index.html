@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="manifest" href="./manifest.json">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#080f23">
     <title>Zayyan Scientific Calculator</title>
@@ -139,6 +140,16 @@
     </section>
 
 </main>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./service-worker.js")
+        .then(() => console.log("Calculator service worker registered successfully."))
+        .catch((error) => console.error("Service worker registration failed:", error));
+    });
+  }
+</script>
 
 </body>
 </html>

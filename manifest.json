@@ -1,0 +1,24 @@
+
+{
+  "name": "Zayyan's Scientific Calculator",
+  "short_name": "Zayyan Calc",
+  "description": "A scientific calculator with memory, calculation history, and dark and light themes.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080f23",
+  "theme_color": "#080f23",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
