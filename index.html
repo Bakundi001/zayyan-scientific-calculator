@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zayyan's Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+ 
+<main class="calculator">
+    <h1>Zayyan's Scientific Calculator</h1>
+    <p class="subtitle">Calculate smarter, one step at a time.</p>
+
+    <section class="display-section">
+        <div id="expression" class="expression" aria-live="polite"></div>
+        <input
+            type="text"
+            id="display"
+            class="calculator-display"
+            value="0"
+            readonly
+            aria-label="Calculator display"
+        >
+        <div class="angle-mode">
+            <span>Angle mode</span>
+            <button id="angleModeBtn" type="button">DEG</button>
+        </div>
+    </section>
+
+    <section class="keypad" aria-label="Calculator keypad">
+        <button id="clearBtn" class="clear-key" type="button">AC</button>
+        <button id="backspaceBtn" type="button">⌫</button>
+        <button id="negateBtn">+/−</button>
+        <button id="percentBtn" type="button">%</button>
+        <button id="divBtn" class="operator-key" type="button">÷</button>
+
+        <button data-digit="7" type="button">7</button>
+        <button data-digit="8" type="button">8</button>
+        <button data-digit="9" type="button">9</button>
+        <button id="mulBtn" class="operator-key" type="button">×</button>
+
+        <button data-digit="4" type="button">4</button>
+        <button data-digit="5" type="button">5</button>
+        <button data-digit="6" type="button">6</button>
+        <button id="subBtn" class="operator-key" type="button">−</button>
+
+        <button data-digit="1" type="button">1</button>
+        <button data-digit="2" type="button">2</button>
+        <button data-digit="3" type="button">3</button>
+        <button id="addBtn" class="operator-key" type="button">+</button>
+
+        <button data-digit="0" class="zero-key" type="button">0</button>
+        <button id="decimalBtn" type="button">.</button>
+        <button id="equalsBtn" class="equals-key" type="button">=</button>
+    </section>
+
+    <section class="scientific-section">
+        <h2>Scientific Functions</h2>
+
+        <div class="scientific-buttons">
+            <button id="squareBtn" type="button">x²</button>
+            <button id="sqrtBtn" type="button">√x</button>
+            <button id="powerBtn" type="button">xʸ</button>
+            <button id="factorialBtn" type="button">n!</button>
+
+            <button id="sinBtn" type="button">sin</button>
+            <button id="cosBtn" type="button">cos</button>
+            <button id="tanBtn" type="button">tan</button>
+            <button id="logBtn" type="button">log</button>
+
+            <button id="lnBtn" type="button">ln</button>
+            <button id="piBtn" type="button">π</button>
+            <button id="eBtn" type="button">e</button>
+        </div>
+    </section>
+
+    <section class="result-section">
+        <h2>Result</h2>
+        <p id="result" aria-live="polite">Your answer will appear here.</p>
+    </section>
+
+    <section class="history-section">
+        <div class="history-heading">
+            <h2>Calculation History</h2>
+            <button id="clearHistoryBtn" class="history-clear-btn" type="button">
+                Clear History
+            </button>
+        </div>
+
+        <ul id="historyList" aria-live="polite">
+            <li class="empty-history">Your calculations will appear here.</li>
+        </ul>
+    </section>
+</main>
+
+</body>
+</html>
