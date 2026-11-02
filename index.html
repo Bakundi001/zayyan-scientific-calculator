@@ -1,155 +1,99 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="manifest" href="./manifest.json">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#080f23">
-    <title>Zayyan Scientific Calculator</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080f23">
+  <meta name="description" content="Zayyan's responsive scientific calculator.">
+  <title>Zayyan Scientific Calculator</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
 </head>
 <body>
-
 <main class="calculator">
+  <header class="calculator-header">
+    <h1>Zayyan</h1>
+    <p class="subtitle">Scientific Calculator</p>
+  </header>
 
-    <header class="calculator-header">
-        <h1>Zayyan</h1>
-        <p class="subtitle">Scientific Calculator</p>
-    </header>
-
-    <section class="display-section">
-        <div id="expression" class="expression"
-             aria-live="polite"></div>
-
-        <input
-            type="text"
-            id="display"
-            class="calculator-display"
-            value="0"
-            readonly
-            aria-label="Calculator display"
-        >
-
-        <div class="angle-mode">
-            <span>Angle mode</span>
-            <button id="angleModeBtn" type="button">DEG</button>
-        </div>
-    </section>
-
-    <section class="keypad" aria-label="Calculator keypad">
-        <button id="clearBtn" class="clear-key" type="button">AC</button>
-        <button id="backspaceBtn" type="button">⌫</button>
-        <button id="negateBtn" type="button">+/−</button>
-        <button id="percentBtn" type="button">%</button>
-        <button id="divBtn" class="operator-key" type="button">÷</button>
-
-        <button data-digit="7" type="button">7</button>
-        <button data-digit="8" type="button">8</button>
-        <button data-digit="9" type="button">9</button>
-        <button id="mulBtn" class="operator-key" type="button">×</button>
-
-        <button data-digit="4" type="button">4</button>
-        <button data-digit="5" type="button">5</button>
-        <button data-digit="6" type="button">6</button>
-        <button id="subBtn" class="operator-key" type="button">−</button>
-
-        <button data-digit="1" type="button">1</button>
-        <button data-digit="2" type="button">2</button>
-        <button data-digit="3" type="button">3</button>
-        <button id="addBtn" class="operator-key" type="button">+</button>
-
-        <button data-digit="0" class="zero-key" type="button">0</button>
-        <button id="decimalBtn" type="button">.</button>
-        
-    </section>
-
-    <section class="scientific-section"
-             aria-label="Scientific functions">
-
-<div class="memory-buttons">
+  <section class="display-section" aria-label="Calculator display">
+    <div id="expression" class="expression" aria-live="polite"></div>
+    <input id="display" class="calculator-display" type="text" value="0" readonly aria-label="Calculator display">
+    <div class="angle-mode"><span>Angle mode</span><button id="angleModeBtn" type="button">DEG</button></div>
+  </section>
+<div class="memory-buttons" aria-label="Memory functions">
     <button id="memoryClearBtn" type="button">MC</button>
     <button id="memoryRecallBtn" type="button">MR</button>
     <button id="memoryAddBtn" type="button">M+</button>
     <button id="memorySubtractBtn" type="button">M−</button>
-</div>
+  </div>
+  <section class="keypad" aria-label="Calculator keypad">
+    <button id="clearBtn" class="clear-key" type="button">AC</button>
+    <button id="backspaceBtn" type="button" aria-label="Backspace">⌫</button>
+    <button id="negateBtn" type="button">+/−</button>
+    <button id="percentBtn" type="button">%</button>
 
+    <button data-digit="7" type="button">7</button>
+    <button data-digit="8" type="button">8</button>
+    <button data-digit="9" type="button">9</button>
+    <button id="divBtn" class="operator-key" type="button">÷</button>
 
-<div class="theme-switch-row">
-    <span id="themeLabel">Dark Mode</span>
+    <button data-digit="4" type="button">4</button>
+    <button data-digit="5" type="button">5</button>
+    <button data-digit="6" type="button">6</button>
+    <button id="mulBtn" class="operator-key" type="button">×</button>
 
-    <button
-        id="themeToggleBtn"
-        class="theme-toggle"
-        type="button"
-        role="switch"
-        aria-checked="false"
-        aria-label="Toggle light theme"
-    >
+    <button data-digit="1" type="button">1</button>
+    <button data-digit="2" type="button">2</button>
+    <button data-digit="3" type="button">3</button>
+    <button id="subBtn" class="operator-key" type="button">−</button>
+
+    <button data-digit="0" class="zero-key" type="button">0</button>
+    <button id="decimalBtn" type="button">.</button>
+    <button id="addBtn" class="operator-key" type="button">+</button>
+    <button id="equalsBtn" class="equals-key" type="button">=</button>
+  </section>
+
+  <section class="scientific-section" aria-label="Scientific functions">
+    <div class="theme-switch-row">
+      <span id="themeLabel">Dark Mode</span>
+      <button id="themeToggleBtn" class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Switch to light theme">
         <span class="theme-toggle-knob"></span>
-    </button>
-</div>
+      </button>
+    </div>
+    <button id="scientificToggleBtn" class="scientific-toggle-btn" type="button" aria-expanded="false" aria-controls="scientificButtons">Scientific Functions ▼</button>
+    <div class="scientific-buttons is-collapsed" id="scientificButtons">
+     
+      <button id="squareBtn" type="button">x²</button>
+      <button id="sqrtBtn" type="button">√x</button>
+      <button id="powerBtn" type="button">xʸ</button>
+      <button id="factorialBtn" type="button">n!</button>
+      <button id="sinBtn" type="button">sin</button>
+      <button id="cosBtn" type="button">cos</button>
+      <button id="tanBtn" type="button">tan</button>
+      <button id="logBtn" type="button">log</button>
+      <button id="lnBtn" type="button">ln</button>
+      <button id="piBtn" type="button">π</button>
+      <button id="eBtn" type="button">e</button>
+    </div>
+  </section>
 
-
-
-        <div class="scientific-buttons">
-            <button id="squareBtn" type="button">x²</button>
-            <button id="sqrtBtn" type="button">√x</button>
-            <button id="powerBtn" type="button">xʸ</button>
-            <button id="factorialBtn" type="button">n!</button>
-            <button id="sinBtn" type="button">sin</button>
-            <button id="cosBtn" type="button">cos</button>
-
-            <button id="tanBtn" type="button">tan</button>
-            <button id="logBtn" type="button">log</button>
-            <button id="lnBtn" type="button">ln</button>
-            <button id="piBtn" type="button">π</button>
-            <button id="eBtn" type="button">e</button>
-            <button id="expBtn" type="button">EXP</button>
-            <button id="equalsBtn" class="equals-key" type="button">=</button>
-        </div>
-    </section>
-
-    <section class="bottom-panels">
-
-        <div class="result-section">
-            <h2>▦ Result</h2>
-            <p id="result" aria-live="polite">
-                Your answer will appear here.
-            </p>
-        </div>
-
-        <div class="history-section">
-            <div class="history-heading">
-                <h2>◷ History</h2>
-                <button id="clearHistoryBtn"
-                        class="history-clear-btn"
-                        type="button">
-                    Clear
-                </button>
-            </div>
-
-            <ul id="historyList" aria-live="polite">
-                <li class="empty-history">
-                    Your calculations will appear here.
-                </li>
-            </ul>
-        </div>
-
-    </section>
-
+  <section class="bottom-panels">
+    <div class="result-section"><h2>▦ Result</h2><p id="result" aria-live="polite">Your answer will appear here.</p></div>
+    <div class="history-section">
+      <div class="history-heading"><h2>◷ History</h2><button id="clearHistoryBtn" class="history-clear-btn" type="button">Clear</button></div>
+      <ul id="historyList" aria-live="polite"><li class="empty-history">Your calculations will appear here.</li></ul>
+    </div>
+  </section>
 </main>
-
 <script>
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./service-worker.js")
-        .then(() => console.log("Calculator service worker registered successfully."))
-        .catch((error) => console.error("Service worker registration failed:", error));
-    });
-  }
+if ("serviceWorker" in navigator && location.protocol !== "file:") {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .catch(error => console.error("Service worker registration failed:", error));
+  });
+}
 </script>
-
 </body>
 </html>
