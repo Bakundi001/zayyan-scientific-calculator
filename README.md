@@ -28,6 +28,9 @@ Zayyan Scientific Calculator is a beginner-friendly web application designed to 
 
 [Open Zayyan Scientific Calculator](https://bakundi001.github.io/zayyan-scientific-calculator/)
 
+## Project Screenshot
+
+![Zayyan Scientific Calculator](calculator-screenshot.png)
 ## Source Code
 
 [View the GitHub Repository](https://github.com/Bakundi001/zayyan-scientific-calculator/)
