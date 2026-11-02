@@ -22,11 +22,12 @@
       "type": "image/png"
     }
   ],
- "screenshots": [
-  {
-    "src": "./calculator-screenshot.png",
-    "sizes": "318x549",
-    "type": "image/png",
-    "form_factor": "narrow"
-  }
-]
+  "screenshots": [
+    {
+      "src": "./calculator-screenshot.png",
+      "sizes": "318x549",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+}
